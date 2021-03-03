@@ -1,12 +1,18 @@
 package com.blogapi.blogapi.models;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "tema")
@@ -19,6 +25,10 @@ public class Tema {
 	@NotNull(message = "campo NOME não pode ser Nulo")
 	@Size(min = 2, max = 100, message = "campo Nome é de tamanho minimo de 2 e maximo de 100! ")
 	private String nome;
+
+	@OneToMany(mappedBy = "tema", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("tema")
+	private List<Postagens> postagens;
 
 	public long getId() {
 		return id;
@@ -34,6 +44,14 @@ public class Tema {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public List<Postagens> getPostagens() {
+		return postagens;
+	}
+
+	public void setPostagens(List<Postagens> postagens) {
+		this.postagens = postagens;
 	}
 
 }

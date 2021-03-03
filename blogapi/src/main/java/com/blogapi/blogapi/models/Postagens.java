@@ -1,12 +1,19 @@
 package com.blogapi.blogapi.models;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "postagens")
@@ -22,6 +29,13 @@ public class Postagens {
 	@NotNull(message = "O Campo TEXTO não pode estar vazio")
 	@Size(min = 2, max = 100, message = "O minimo de caracters é 2 e maximo 100")
 	private String texto;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date data = new java.sql.Date(System.currentTimeMillis());
+
+	@ManyToOne
+	@JsonIgnoreProperties("postagens")
+	private Tema tema;
 
 	public long getId() {
 		return id;
@@ -45,6 +59,22 @@ public class Postagens {
 
 	public void setTexto(String texto) {
 		this.texto = texto;
+	}
+
+	public Date getData() {
+		return data;
+	}
+
+	public void setData(Date data) {
+		this.data = data;
+	}
+
+	public Tema getTema() {
+		return tema;
+	}
+
+	public void setTema(Tema tema) {
+		this.tema = tema;
 	}
 
 }
