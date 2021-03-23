@@ -22,6 +22,7 @@ public class Postagens {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+
 	@NotNull(message = "O Campo Titulo não pode estar vazio")
 	@Size(min = 2, max = 100, message = "O minimo de caracters é 2 e maximo 100")
 	private String titulo;
@@ -36,6 +37,10 @@ public class Postagens {
 	@ManyToOne
 	@JsonIgnoreProperties("postagens")
 	private Tema tema;
+
+	@ManyToOne
+	@JsonIgnoreProperties("postagens")
+	private Usuario usuario;
 
 	public long getId() {
 		return id;
@@ -75,6 +80,14 @@ public class Postagens {
 
 	public void setTema(Tema tema) {
 		this.tema = tema;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 }

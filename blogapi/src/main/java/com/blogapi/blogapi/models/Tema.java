@@ -26,7 +26,7 @@ public class Tema {
 	@Size(min = 2, max = 100, message = "campo Nome é de tamanho minimo de 2 e maximo de 100! ")
 	private String nome;
 
-	@OneToMany(mappedBy = "tema", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "tema", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("tema")
 	private List<Postagens> postagens;
 
