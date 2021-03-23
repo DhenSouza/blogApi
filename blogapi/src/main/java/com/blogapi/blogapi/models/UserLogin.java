@@ -2,6 +2,8 @@ package com.blogapi.blogapi.models;
 
 public class UserLogin {
 
+	private long id;
+
 	private String nome;
 
 	private String usuario;
@@ -60,6 +62,14 @@ public class UserLogin {
 
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 }
