@@ -22,6 +22,7 @@ public class UsuarioService {
 
 		if (repository.findByUsuario(usuario.getUsuario()).isPresent())
 			return null;
+		
 
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
