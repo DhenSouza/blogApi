@@ -59,6 +59,11 @@ public class UsuarioController {
 
 	@PutMapping
 	public ResponseEntity<Usuario> put(@RequestBody Usuario usuario) {
-		return ResponseEntity.ok(repository.save(usuario));
+		Optional<Usuario> user = usuarioService.atualizarUsuario(usuario);
+		try {
+			return ResponseEntity.ok(user.get());
+		} catch (Exception e) {
+			return ResponseEntity.badRequest().build();
+		}
 	}
 }

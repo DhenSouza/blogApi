@@ -23,11 +23,11 @@ public class Usuario {
 	private long id;
 
 	@NotNull(message = "NOME não pode estar vazia")
-	@Size(min = 2, max = 100, message = "Tamanho de NOME é minimo 5 e maximo 100")
+	@Size(min = 2, max = 100, message = "Tamanho de NOME é minimo 2 e maximo 100")
 	private String nome;
 
 	@NotNull(message = "USUARIO não pode estar vazia")
-	@Size(min = 2, max = 100, message = "Tamanho de USUARIO é minimo 5 e maximo 100")
+	@Size(min = 2, max = 100, message = "Tamanho de USUARIO é minimo 2 e maximo 100")
 	private String usuario;
 
 	@NotNull(message = "SENHA não pode estar vazia")
